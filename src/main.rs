@@ -1,3 +1,13 @@
+use clap::Parser;
+
+#[derive(Parser)]
+#[command(name = "secho")]
+#[command(version = "0.0.1")]
+#[command(about = "Rust echo command", long_about = None)]
+struct Cli {
+    name: Vec<String>,
+}
+
 fn main() {
-    println!("{:?}", std::env::args());
+    let _cli = Cli::parse();
 }
