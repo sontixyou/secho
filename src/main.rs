@@ -9,5 +9,7 @@ struct Cli {
 }
 
 fn main() {
-    let _cli = Cli::parse();
+    let cli = Cli::parse();
+
+    println!("{:?}", cli.name);
 }
