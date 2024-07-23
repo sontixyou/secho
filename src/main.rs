@@ -1,3 +1,5 @@
+use clap::Arg;
+use clap::Command;
 use clap::Parser;
 
 #[derive(Parser)]
@@ -9,7 +11,15 @@ struct Cli {
 }
 
 fn main() {
-    let cli = Cli::parse();
-
-    println!("{:?}", cli.name);
+    let cli = Command::new("secho")
+        .author("sontixyou")
+        .version("0.0.1")
+        .about("print text")
+        .arg(
+            Arg::new("input text")
+                .value_name("TEXT")
+                .help("Input text to print")
+                .required(true),
+        )
+        .get_matches();
 }
