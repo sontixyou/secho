@@ -9,6 +9,7 @@ fn main() {
             Arg::new("input text")
                 .value_name("TEXT")
                 .help("Input text to print")
+                .num_args(2)
                 .required(true),
         )
         .arg(
@@ -19,4 +20,5 @@ fn main() {
                 .action(ArgAction::SetFalse),
         )
         .get_matches();
+    println!("{:#?}", cli);
 }
