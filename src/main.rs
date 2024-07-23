@@ -1,7 +1,4 @@
-use clap::Arg;
-use clap::ArgAction;
-use clap::Command;
-use clap::Parser;
+use clap::{Arg, ArgAction, Command, Parser};
 
 #[derive(Parser)]
 #[command(name = "secho")]
