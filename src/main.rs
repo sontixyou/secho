@@ -1,4 +1,5 @@
 use clap::Arg;
+use clap::ArgAction;
 use clap::Command;
 use clap::Parser;
 
@@ -20,6 +21,13 @@ fn main() {
                 .value_name("TEXT")
                 .help("Input text to print")
                 .required(true),
+        )
+        .arg(
+            Arg::new("omit_newline")
+                .short('n')
+                .long("no-newline")
+                .value_name("Do not output the trailing newline")
+                .action(ArgAction::SetFalse),
         )
         .get_matches();
 }
