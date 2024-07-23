@@ -9,7 +9,7 @@ fn main() {
             Arg::new("input text")
                 .value_name("TEXT")
                 .help("Input text to print")
-                .num_args(2)
+                .num_args(1..)
                 .required(true),
         )
         .arg(
