@@ -1,12 +1,4 @@
-use clap::{Arg, ArgAction, Command, Parser};
-
-#[derive(Parser)]
-#[command(name = "secho")]
-#[command(version = "0.0.1")]
-#[command(about = "Rust echo command", long_about = None)]
-struct Cli {
-    name: Vec<String>,
-}
+use clap::{Arg, ArgAction, Command};
 
 fn main() {
     let cli = Command::new("secho")
