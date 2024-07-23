@@ -15,7 +15,7 @@ fn main() {
             Arg::new("omit_newline")
                 .short('n')
                 .long("no-newline")
-                .value_name("Do not output the trailing newline")
+                .help("Do not output the trailing newline")
                 .action(ArgAction::SetFalse),
         )
         .get_matches();
