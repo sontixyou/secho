@@ -6,6 +6,9 @@
 
 
 ```sh
+curl -LO https://github.com/sontixyou/secho/releases/download/v0.0.1/secho.tar.gz
+tar -xvf secho.tar.gz
+sudo mv secho /usr/local/bin
 ```
 
 ## Command
