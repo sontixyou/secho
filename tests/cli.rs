@@ -33,4 +33,40 @@ mod tests {
             .stdout(expected_value);
         Ok(())
     }
+
+    #[test]
+    fn test_hello2() -> TestResult {
+        let outfile = "tests/expected/hello2.txt";
+        let expected_value = fs::read_to_string(outfile)?;
+        let mut cmd = Command::cargo_bin("secho")?;
+        cmd.args(vec!["Hello", "there"])
+            .assert()
+            .success()
+            .stdout(expected_value);
+        Ok(())
+    }
+
+    #[test]
+    fn test_hello1_with_new_line() -> TestResult {
+        let outfile = "tests/expected/hello1.n.txt";
+        let expected_value = fs::read_to_string(outfile)?;
+        let mut cmd = Command::cargo_bin("secho")?;
+        cmd.args(vec!["Hello there", "-n"])
+            .assert()
+            .success()
+            .stdout(expected_value);
+        Ok(())
+    }
+
+    #[test]
+    fn test_hello2_with_new_line() -> TestResult {
+        let outfile = "tests/expected/hello2.n.txt";
+        let expected_value = fs::read_to_string(outfile)?;
+        let mut cmd = Command::cargo_bin("secho")?;
+        cmd.args(vec!["Hello", "there", "-n"])
+            .assert()
+            .success()
+            .stdout(expected_value);
+        Ok(())
+    }
 }
