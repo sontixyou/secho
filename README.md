@@ -14,4 +14,3 @@
 $ secho Hello! Rust
 Hello! Rust
 ```
-```
