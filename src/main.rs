@@ -1,7 +1,7 @@
 use clap::{Arg, ArgAction, ArgMatches, Command};
 
 fn main() {
-    let cli = Command::new("secho")
+    let cli: ArgMatches = Command::new("secho")
         .author("sontixyou")
         .version("0.0.1")
         .about("print text")
@@ -20,7 +20,6 @@ fn main() {
                 .action(ArgAction::SetFalse),
         )
         .get_matches();
-    println!("{:#?}", cli);
-    let text: ValuesRef<Vec<String>> =
-        ArgMatches::get_many(&cli, "text").expect("text is required");
+    let text = cli.get_one::<String>("text").unwrap();
+    println!("{:?}", text);
 }
