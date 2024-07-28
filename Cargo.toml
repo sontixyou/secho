@@ -2,6 +2,8 @@
 name = "secho"
 version = "0.0.1"
 edition = "2021"
+license = "MIT"
+license-file = "LICENSE.txt"
 
 [dependencies]
 clap = { version = "4.5.9", features = ["derive"] }
