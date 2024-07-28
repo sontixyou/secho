@@ -24,6 +24,6 @@ fn main() {
     let iterator_text = text.map(|s| s.to_string());
     let vec_text: Vec<String> = iterator_text.collect();
     let omit_newline = *cli.get_one::<bool>("omit_newline").unwrap_or(&false);
-    let ending = if omit_newline { "" } else { "\n" };
+    let ending = if omit_newline { "\n" } else { "" };
     print!("{}{}", vec_text.join(" "), ending);
 }
