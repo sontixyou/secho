@@ -1,4 +1,4 @@
-use clap::{Arg, ArgAction, ArgMatches, Command};
+use clap::{parser::ValuesRef, Arg, ArgAction, ArgMatches, Command};
 
 fn main() {
     let cli: ArgMatches = Command::new("secho")
@@ -20,6 +20,8 @@ fn main() {
                 .action(ArgAction::SetFalse),
         )
         .get_matches();
-    let text = cli.get_one::<String>("text").unwrap();
-    println!("{:?}", text);
+    let text: ValuesRef<String> = cli.get_many::<String>("text").unwrap();
+    let iterator_text = text.map(|s| s.to_string());
+    let vec_text: Vec<String> = iterator_text.collect();
+    println!("{}", vec_text.join(" "));
 }
