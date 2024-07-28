@@ -13,10 +13,12 @@ jobs:
 
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.79.0"
 
       - name: Extract version from Cargo.toml
         id: cargo-version
-        run: echo "VERSION=$(grep '^version =' Cargo.toml | awk -F'"' '{print $2}' >> $GITHUB_ENV
+        run: echo "VERSION=$(grep '^version =' Cargo.toml | awk -F'"' '{print $2}')" >> $GITHUB_ENV
 
       - name: Build project
         run: cargo build --release --target aarch64-apple-darwin
