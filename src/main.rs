@@ -23,5 +23,7 @@ fn main() {
     let text: ValuesRef<String> = cli.get_many::<String>("text").unwrap();
     let iterator_text = text.map(|s| s.to_string());
     let vec_text: Vec<String> = iterator_text.collect();
-    println!("{}", vec_text.join(" "));
+    let omit_newline = *cli.get_one::<bool>("omit_newline").unwrap_or(&false);
+    let ending = if omit_newline { "" } else { "\n" };
+    print!("{}{}", vec_text.join(" "), ending);
 }
