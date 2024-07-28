@@ -4,28 +4,33 @@ mod tests {
     use predicates::prelude::*;
     use std::fs;
 
+    type TestResult = Result<(), Box<dyn std::error::Error>>;
+
     #[test]
-    fn test_no_args() {
-        let mut cmd = assert_cmd::Command::cargo_bin("secho").unwrap();
+    fn test_no_args() -> TestResult {
+        let mut cmd = assert_cmd::Command::cargo_bin("secho")?;
         cmd.assert()
             .failure()
             .stderr("error: the following required arguments were not provided:\n  <TEXT>...\n\nUsage: secho <TEXT>...\n\nFor more information, try '--help'.\n");
+        Ok(())
     }
 
     #[test]
-    fn test_run() {
-        let mut cmd = assert_cmd::Command::cargo_bin("secho").unwrap();
+    fn test_run() -> TestResult {
+        let mut cmd = assert_cmd::Command::cargo_bin("secho")?;
         cmd.arg("hello").assert().success();
+        Ok(())
     }
 
     #[test]
-    fn test_hello1() {
+    fn test_hello1() -> TestResult {
         let outfile = "tests/expected/hello1.txt";
-        let expected_value = fs::read_to_string(outfile).unwrap();
-        let mut cmd = assert_cmd::Command::cargo_bin("secho").unwrap();
+        let expected_value = fs::read_to_string(outfile)?;
+        let mut cmd = assert_cmd::Command::cargo_bin("secho")?;
         cmd.arg("Hello there")
             .assert()
             .success()
             .stdout(expected_value);
+        Ok(())
     }
 }
