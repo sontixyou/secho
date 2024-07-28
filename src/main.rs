@@ -1,4 +1,4 @@
-use clap::{Arg, ArgAction, Command};
+use clap::{Arg, ArgAction, ArgMatches, Command};
 
 fn main() {
     let cli = Command::new("secho")
@@ -6,7 +6,7 @@ fn main() {
         .version("0.0.1")
         .about("print text")
         .arg(
-            Arg::new("input text")
+            Arg::new("text")
                 .value_name("TEXT")
                 .help("Input text to print")
                 .num_args(1..)
@@ -21,4 +21,6 @@ fn main() {
         )
         .get_matches();
     println!("{:#?}", cli);
+    let text: ValuesRef<Vec<String>> =
+        ArgMatches::get_many(&cli, "text").expect("text is required");
 }
